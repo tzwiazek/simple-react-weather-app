@@ -1,0 +1,34 @@
+* {
+  box-sizing:border-box;
+  padding:0;
+  margin:0;
+}
+
+body {
+  margin:25px;
+  position:relative;
+  font-family:'Open Sans', sans-serif;
+
+  @media (min-width: 768px) {
+    margin:40px
+  }
+
+  &:before {
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    background-image:url('../images/background.jpg');
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:cover;
+  }
+}
+
+#root {
+  height:100%;
+  margin:0 auto;
+  position:relative;
+}
