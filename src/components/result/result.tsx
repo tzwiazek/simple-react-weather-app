@@ -1,5 +1,5 @@
-import React from "react";
-import ForecastHour from "../forecast/forecast";
+import React from 'react';
+import ForecastHour from '../forecast/forecast';
 import {
   Results,
   ChangeLocation,
@@ -17,33 +17,25 @@ import {
   SmallLabel,
   MediumLabel,
   BigLabel,
-  Text
-} from "./result.styles";
-import { weatherDataInfo, weatherDataInfoForecast } from "../../shared/interfaces/app.interface";
-import cloudIcon from "../../assets/images/cloud.svg";
-import sunIcon from "../../assets/images/sun.svg";
-import dropIcon from "../../assets/images/drop.svg";
-import rainIcon from "../../assets/images/rain.svg";
-import snowyIcon from "../../assets/images/snowy.svg";
-import thunderstormIcon from "../../assets/images/thunderstorm.svg";
-import windIcon from "../../assets/images/wind.svg";
-import sunriseIcon from "../../assets/images/sunrise.svg";
-import sunsetIcon from "../../assets/images/sunset.svg";
-import { AppService } from "../app/app.service";
+  Text,
+} from './result.styles';
+import { weatherDataInfo, weatherDataInfoForecast } from '../../shared/interfaces/app.interface';
+import cloudIcon from '../../assets/images/cloud.svg';
+import sunIcon from '../../assets/images/sun.svg';
+import dropIcon from '../../assets/images/drop.svg';
+import rainIcon from '../../assets/images/rain.svg';
+import snowyIcon from '../../assets/images/snowy.svg';
+import thunderstormIcon from '../../assets/images/thunderstorm.svg';
+import windIcon from '../../assets/images/wind.svg';
+import sunriseIcon from '../../assets/images/sunrise.svg';
+import sunsetIcon from '../../assets/images/sunset.svg';
+import { AppService } from '../app/app.service';
 
-const Result = ({ weather }: { weather: weatherDataInfo}): JSX.Element => {
+const Result = ({ weather }: { weather: weatherDataInfo }): JSX.Element => {
+  console.log(weather);
 
-  const {
-    city,
-    country,
-    main,
-    temp,
-    humidity,
-    wind,
-    sunset,
-    sunrise,
-    forecast
-  }: weatherDataInfo = weather;
+  const { city, country, main, temp, humidity, wind, sunset, sunrise, forecast }: weatherDataInfo =
+    weather;
 
   const forecasts: JSX.Element[] = forecast.map((item: weatherDataInfoForecast) => (
     <ForecastHour
@@ -58,15 +50,25 @@ const Result = ({ weather }: { weather: weatherDataInfo}): JSX.Element => {
   ));
 
   function displayCurrentWeather(weather: string = main): string {
-    if (weather.toLowerCase() === 'thunderstorm') {return thunderstormIcon;}
-    else if (weather.toLowerCase() === 'drizzle') {return rainIcon;}
-    else if (weather.toLowerCase() === 'rain') {return dropIcon;}
-    else if (weather.toLowerCase() === 'snow') {return snowyIcon;}
-    else if (weather.toLowerCase() === 'clear') {return sunIcon;}
-    else if (weather.toLowerCase() === 'wind') {return windIcon;}
-    else if (weather.toLowerCase() === 'sunrise') {return sunriseIcon;}
-    else if (weather.toLowerCase() === 'sunset') {return sunsetIcon;}
-    else {return cloudIcon;}
+    if (weather.toLowerCase() === 'thunderstorm') {
+      return thunderstormIcon;
+    } else if (weather.toLowerCase() === 'drizzle') {
+      return rainIcon;
+    } else if (weather.toLowerCase() === 'rain') {
+      return dropIcon;
+    } else if (weather.toLowerCase() === 'snow') {
+      return snowyIcon;
+    } else if (weather.toLowerCase() === 'clear') {
+      return sunIcon;
+    } else if (weather.toLowerCase() === 'wind') {
+      return windIcon;
+    } else if (weather.toLowerCase() === 'sunrise') {
+      return sunriseIcon;
+    } else if (weather.toLowerCase() === 'sunset') {
+      return sunsetIcon;
+    } else {
+      return cloudIcon;
+    }
   }
 
   return (
@@ -77,15 +79,18 @@ const Result = ({ weather }: { weather: weatherDataInfo}): JSX.Element => {
         </WeatherIcon>
         <BigLabel>{main}</BigLabel>
         <Temperature>{Math.floor(temp)}&#176;</Temperature>
-        <Text>{city}, {country}</Text>
+        <Text>
+          {city}, {country}
+        </Text>
         <ChangeLocation>
-          <SmallLabel onClick={() => AppService.toggleLocation$.next(true)}>Change location</SmallLabel>
+          <SmallLabel onClick={() => AppService.toggleLocation$.next(true)}>
+            Change location
+          </SmallLabel>
           <LocationImage onClick={() => AppService.toggleLocation$.next(true)}></LocationImage>
         </ChangeLocation>
       </CurrentWeatherWrapper>
       <WeatherDetailsWrapper>
         <WeatherDetailsConteiner>
-
           <WeatherDetail>
             <WeatherDetailIcon>
               <img src={displayCurrentWeather('wind')} alt={`${displayCurrentWeather('wind')}`} />
@@ -112,7 +117,10 @@ const Result = ({ weather }: { weather: weatherDataInfo}): JSX.Element => {
 
           <WeatherDetail>
             <WeatherDetailIcon>
-              <img src={displayCurrentWeather('sunrise')} alt={`${displayCurrentWeather('sunrise')}`} />
+              <img
+                src={displayCurrentWeather('sunrise')}
+                alt={`${displayCurrentWeather('sunrise')}`}
+              />
             </WeatherDetailIcon>
             <WeatherDetailDescription>
               <SmallLabel align="center">Sunrise</SmallLabel>
@@ -124,7 +132,10 @@ const Result = ({ weather }: { weather: weatherDataInfo}): JSX.Element => {
 
           <WeatherDetail>
             <WeatherDetailIcon>
-              <img src={displayCurrentWeather('sunset')} alt={`${displayCurrentWeather('sunset')}`} />
+              <img
+                src={displayCurrentWeather('sunset')}
+                alt={`${displayCurrentWeather('sunset')}`}
+              />
             </WeatherDetailIcon>
             <WeatherDetailDescription>
               <SmallLabel align="center">Sunset</SmallLabel>
@@ -133,7 +144,6 @@ const Result = ({ weather }: { weather: weatherDataInfo}): JSX.Element => {
               </Text>
             </WeatherDetailDescription>
           </WeatherDetail>
-
         </WeatherDetailsConteiner>
       </WeatherDetailsWrapper>
       <ForecastWrapper>

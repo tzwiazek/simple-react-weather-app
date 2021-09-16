@@ -1,9 +1,15 @@
-import React from "react";
-import error404Image from "../../assets/images/404.svg";
-import { AppService } from "../app/app.service";
-import { NotFoundContainer, NotfoundIcon, NotFoundText, NotFoundLocation, LocationImage  } from "./not-found.styles";
+import React from 'react';
+import error404Image from '../../assets/images/404.svg';
+import { AppService } from '../app/app.service';
+import {
+  NotFoundContainer,
+  NotfoundIcon,
+  NotFoundText,
+  NotFoundLocation,
+  LocationImage,
+} from './not-found.styles';
 
-const NotFound = (): JSX.Element =>
+const NotFound = (): JSX.Element => (
   <NotFoundContainer>
     <NotfoundIcon>
       <img src={error404Image} alt="not found" />
@@ -13,6 +19,5 @@ const NotFound = (): JSX.Element =>
       Change location <LocationImage></LocationImage>
     </NotFoundLocation>
   </NotFoundContainer>
-;
-
+);
 export default NotFound;

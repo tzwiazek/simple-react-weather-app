@@ -1,10 +1,15 @@
-import React, { SyntheticEvent } from "react";
-import Search from "../search/search";
-import Result from "../result/result";
-import NotFound from "../not-found/not-found";
-import { AppTitle, WeatherContainer } from "./app.styles";
-import { State, weatherData, weatherDataInfo, ForecastData } from "../../shared/interfaces/app.interface";
-import { AppService } from "./app.service";
+import React, { SyntheticEvent } from 'react';
+import Search from '../search/search';
+import Result from '../result/result';
+import NotFound from '../not-found/not-found';
+import { AppTitle, WeatherContainer } from './app.styles';
+import {
+  State,
+  weatherData,
+  weatherDataInfo,
+  ForecastData,
+} from '../../shared/interfaces/app.interface';
+import { AppService } from './app.service';
 
 class App extends React.Component {
   public componentDidMount(): void {
@@ -14,22 +19,24 @@ class App extends React.Component {
         value: '',
         weatherInfo: null,
         error: false,
-        changeLocation: false
+        changeLocation: false,
       });
     });
   }
 
-  readonly basicURL: Readonly<string> = 'https://api.openweathermap.org/data/2.5/';
+  readonly basicURL: Readonly<string> = process.env.REACT_APP_BASIC_URL as string;
 
   public state: Readonly<State> = {
     submit: false,
     value: '',
     weatherInfo: null,
     error: false,
-    changeLocation: false
+    changeLocation: false,
   };
 
-  private handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  private handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ): void => {
     this.setState({
       value: event.target.value,
     });
@@ -48,7 +55,7 @@ class App extends React.Component {
         submit: false,
         value: '',
         weatherInfo: null,
-        error: false
+        error: false,
       });
     } else {
       Promise.all([fetch(weather), fetch(forecast)])
@@ -72,20 +79,20 @@ class App extends React.Component {
             wind: weather.wind.speed,
             sunset,
             sunrise,
-            forecast: forecast.list
+            forecast: forecast.list,
           };
 
           this.setState({
             submit: true,
             weatherInfo,
-            error: false
+            error: false,
           });
         })
         .catch(() => {
           this.setState({
             submit: true,
             error: true,
-            weatherInfo: null
+            weatherInfo: null,
           });
         });
     }
@@ -112,4 +119,3 @@ class App extends React.Component {
 }
 
 export default App;
-

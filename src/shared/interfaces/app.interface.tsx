@@ -1,19 +1,19 @@
-import { defaultStyleComponentInterface } from "./styledComponents.interface";
+import { defaultStyleComponentInterface } from './styledComponents.interface';
 
 export interface AppTitleInterface extends defaultStyleComponentInterface {
   showResult?: boolean | null;
-};
+}
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface WeatherContainerInterface extends defaultStyleComponentInterface {};
+export interface WeatherContainerInterface extends defaultStyleComponentInterface {}
 
 export interface State {
   submit: boolean;
   value: string;
   weatherInfo: weatherDataInfo | null;
   error: boolean;
-  changeLocation: boolean
-};
+  changeLocation: boolean;
+}
 
 export interface weatherData {
   base: string;
@@ -23,7 +23,7 @@ export interface weatherData {
   cod: number;
   coord: {
     lon: number;
-    lat: number
+    lat: number;
   };
   dt: number;
   id: number;
@@ -56,7 +56,7 @@ export interface weatherData {
     gust: number;
     speed: number;
   };
-};
+}
 
 export interface weatherDataInfo {
   city: string;
@@ -69,7 +69,7 @@ export interface weatherDataInfo {
   sunset: string;
   sunrise: string;
   forecast: weatherDataInfoForecast[];
-};
+}
 
 export interface weatherDataInfoForecast {
   clouds: {
@@ -106,7 +106,7 @@ export interface weatherDataInfoForecast {
     gust: number;
     speed: number;
   };
-};
+}
 
 export interface ForecastData {
   city: {
@@ -125,4 +125,4 @@ export interface ForecastData {
   cnt: number;
   cod: string;
   list: weatherDataInfoForecast[];
-};
+}
