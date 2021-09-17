@@ -1,6 +1,8 @@
 ## Description
 
-Simple react weather app, built in my spare time for learning purposes. My first react app.
+- PWA
+
+My first react app, built in my spare time for learning purposes.
 
 https://mystifying-cray-c74863.netlify.app/
 
