@@ -1,5 +1,6 @@
 ## Description
 
+- rxjs (for tests)
 - PWA
 
 My first react app, built in my spare time for learning purposes.
